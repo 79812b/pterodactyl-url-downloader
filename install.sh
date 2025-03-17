@@ -23,7 +23,9 @@ echo "Installing Pterodactyl URL Downloader Plugin..."
 
 # Step 1: Copy frontend files
 echo "Copying frontend files..."
-cp -r frontend/* "$PANEL_DIR/resources/scripts/components/server/files/"
+FRONTEND_DIR="$PANEL_DIR/resources/scripts/components/server/files"
+cp -r frontend/UrlDownloadModal.tsx "$FRONTEND_DIR/"
+cp -r frontend/FileManagerContainer.tsx "$FRONTEND_DIR/"
 if [ $? -ne 0 ]; then
   echo "Failed to copy frontend files."
   exit 1
@@ -31,7 +33,8 @@ fi
 
 # Step 2: Copy backend files
 echo "Copying backend files..."
-cp -r backend/* "$PANEL_DIR/app/Http/Controllers/Api/Client/Servers/"
+BACKEND_DIR="$PANEL_DIR/app/Http/Controllers/Api/Client/Servers"
+cp -r backend/FileDownloadController.php "$BACKEND_DIR/"
 if [ $? -ne 0 ]; then
   echo "Failed to copy backend files."
   exit 1
